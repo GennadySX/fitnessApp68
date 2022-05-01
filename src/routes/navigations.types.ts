@@ -1,0 +1,32 @@
+/*
+ * @author GennadySX
+ * @created at 2022
+ **/
+
+export enum SCREENS {
+  ///
+  AUTH_INIT = 'AUTH_INIT',
+  AUTH_PHONE = 'AUTH_PHONE',
+  AUTH_CODE = 'AUTH_CODE',
+  AUTH_EMAIL = 'AUTH_EMAIL',
+  AUTH_NAME = 'AUTH_NAME',
+  AUTH_ALLERGIC_PRODUCTS= 'AUTH_ALLERGIC_PRODUCTS',
+  AUTH_PHOTO = 'AUTH_PHOTO',
+  AUTH_ABOUT = 'AUTH_ABOUT',
+  AUTH_NUTRITION_PROGRAM = 'AUTH_NUTRITION_PROGRAM',
+  AUTH_PREPARING = 'AUTH_PREPARING',
+  AUTH_OFFER = 'AUTH_OFFER',
+  AUTH_AGREEMENTS = 'AUTH_AGREEMENTS',
+  AUTH_AGREEMENT = 'AUTH_AGREEMENT',
+  ///
+  HOME_TABS = 'HOME_TABS',
+  MAIN = 'Меню',
+  MARATHON = 'Марафон',
+  WORKOUT = 'Тренировка',
+  FEED = 'Лента',
+
+  //
+  VIDEO = 'Видео',
+  VIDEO_PREPARING = 'Видео загрузка',
+  WORKOUT_FINISH = 'Завершение тренировки',
+}

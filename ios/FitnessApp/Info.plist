@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>ru</string>
+	<key>CFBundleDisplayName</key>
+	<string>Fitness App</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Разрешите доступ к камере, чтобы сделать фото</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Приложение запрашивает доступ к вашим контактам</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Подтвердите пожалуйста свою геопозицию!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Подтвердите пожалуйста свою геопозицию!</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>Подтвердите пожалуйста свою геопозицию!</key>
+		<string>PurposeLocalized</string>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Подтвердите пожалуйста свою геопозицию!</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Доступ к галерее нужен для того, чтобы Вы могли установить фото профиля или поделиться публикацией в ленте</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontsFree-Net-SFProDisplay-Regular.ttf</string>
+		<string>Gilroy-Black.ttf</string>
+		<string>Gilroy-Black.woff</string>
+		<string>Gilroy-BlackItalic.ttf</string>
+		<string>Gilroy-BlackItalic.woff</string>
+		<string>Gilroy-Bold.ttf</string>
+		<string>Gilroy-Bold.woff</string>
+		<string>Gilroy-BoldItalic.ttf</string>
+		<string>Gilroy-BoldItalic.woff</string>
+		<string>Gilroy-ExtraBold.otf</string>
+		<string>Gilroy-ExtraBold.ttf</string>
+		<string>Gilroy-ExtraBold.woff</string>
+		<string>Gilroy-ExtraBoldItalic.ttf</string>
+		<string>Gilroy-ExtraBoldItalic.woff</string>
+		<string>Gilroy-Heavy.ttf</string>
+		<string>Gilroy-Heavy.woff</string>
+		<string>Gilroy-HeavyItalic.ttf</string>
+		<string>Gilroy-HeavyItalic.woff</string>
+		<string>Gilroy-Light.otf</string>
+		<string>Gilroy-Light.ttf</string>
+		<string>Gilroy-Light.woff</string>
+		<string>Gilroy-LightItalic.ttf</string>
+		<string>Gilroy-LightItalic.woff</string>
+		<string>Gilroy-Medium.ttf</string>
+		<string>Gilroy-Medium.woff</string>
+		<string>Gilroy-MediumItalic.ttf</string>
+		<string>Gilroy-MediumItalic.woff</string>
+		<string>Gilroy-Regular.ttf</string>
+		<string>Gilroy-Regular.woff</string>
+		<string>Gilroy-RegularItalic.ttf</string>
+		<string>Gilroy-RegularItalic.woff</string>
+		<string>Gilroy-SemiBold.ttf</string>
+		<string>Gilroy-SemiBold.woff</string>
+		<string>Gilroy-SemiBoldItalic.ttf</string>
+		<string>Gilroy-SemiBoldItalic.woff</string>
+		<string>Gilroy-Thin.ttf</string>
+		<string>Gilroy-Thin.woff</string>
+		<string>Gilroy-ThinItalic.ttf</string>
+		<string>Gilroy-ThinItalic.woff</string>
+		<string>Gilroy-UltraLight.ttf</string>
+		<string>Gilroy-UltraLight.woff</string>
+		<string>Gilroy-UltraLightItalic.ttf</string>
+		<string>Gilroy-UltraLightItalic.woff</string>
+		<string>SFPRODISPLAYBLACKITALIC.OTF</string>
+		<string>SFPRODISPLAYBOLD.OTF</string>
+		<string>SFPRODISPLAYHEAVYITALIC.OTF</string>
+		<string>SFPRODISPLAYLIGHTITALIC.OTF</string>
+		<string>SFPRODISPLAYMEDIUM.OTF</string>
+		<string>SFPRODISPLAYREGULAR.OTF</string>
+		<string>SFPRODISPLAYSEMIBOLDITALIC.OTF</string>
+		<string>SFPRODISPLAYTHINITALIC.OTF</string>
+		<string>SFPRODISPLAYULTRALIGHTITALIC.OTF</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>
