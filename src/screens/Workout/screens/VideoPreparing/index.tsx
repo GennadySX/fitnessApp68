@@ -21,7 +21,13 @@ export const VideoPreparingScreen = () => {
   const navigation = useNavigation<StackNavigationProp<StackParamList, SCREENS.VIDEO_PREPARING>>()
 
   const onFinished = () => {
-    VideoPlayerRef?.onOpen(VideoMock.music, () => navigation.navigate(SCREENS.WORKOUT_FINISH))
+    VideoPlayerRef?.onOpen(VideoMock.music, (unFinished?: boolean) => {
+
+      console.log('unFinished:::x', unFinished)
+      unFinished ? navigation.goBack() : navigation.navigate(SCREENS.WORKOUT_FINISH)
+
+    }
+    )
   }
 
   return (

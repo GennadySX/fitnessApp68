@@ -50,6 +50,7 @@ export const LevelCalorie = ({ calorie, onChange }: LevelCalorieProps) => {
 const MinButton = (props: TouchableOpacityProps) => {
   return (
     <TouchableOpacity style={styles.minPinch} {...props}>
+      <Text style={styles.minText}>Min</Text>
       <Svg source={IconsSVG.union} />
     </TouchableOpacity>
   )

@@ -21,6 +21,7 @@
   "dependencies": {
     "@gennadysx/react-native-haptic-feedback": "^1.1.1",
     "@gennadysx/react-native-linear-gradient": "^2.5.7",
+    "@gennadysx/react-native-navigation-bar-color": "^2.0.1",
     "@gennadysx/react-native-radial-gradient": "^1.1.1",
     "@miblanchard/react-native-slider": "^2.1.0",
     "@react-native-community/blur": "^3.6.0",

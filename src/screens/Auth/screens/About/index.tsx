@@ -97,23 +97,29 @@ export const AuthAboutScreen = () => {
         isVisible={dateModalVisible}
         onClose={() => setDateModalVisibility(false)}
       />
-      <GrowthModal
-        growth={growth}
-        setGrowth={setGrowth}
-        onClose={() => setGrowthModalVisibility(false)}
-        isVisible={growthModalVisible}
-      />
+
+      {growthModalVisible && (
+        <GrowthModal
+          growth={growth}
+          setGrowth={setGrowth}
+          onClose={() => setGrowthModalVisibility(false)}
+          isVisible={growthModalVisible}
+        />
+      )}
+
+      {weightModalVisible && (
+        <WeightModal
+          weight={weight}
+          setWeight={setWeight}
+          onClose={() => setWeightModalVisibility(false)}
+          isVisible={weightModalVisible}
+        />
+      )}
       <GoalModal
         goal={goal}
         setGoal={setGoal}
         onClose={() => setGoalModalVisibility(false)}
         isVisible={goalModalVisible}
-      />
-      <WeightModal
-        weight={weight}
-        setWeight={setWeight}
-        onClose={() => setWeightModalVisibility(false)}
-        isVisible={weightModalVisible}
       />
     </Fragment>
   )

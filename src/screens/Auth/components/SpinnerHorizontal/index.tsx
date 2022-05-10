@@ -46,13 +46,13 @@ export const SpinnerHorizontal = ({
     const scrollPosition = e.nativeEvent.contentOffset.x
     // setActiveIndex( e.nativeEvent.contentOffset.x ? Math.round(scrollPosition / cWidth) : 0 )
     const is = e.nativeEvent.contentOffset.x ? Math.round(scrollPosition / ITEM_WIDTH) : 0
-   s && MMKVStorage.set(valKey, is)
+    s && MMKVStorage.set(valKey, is)
   }
 
   new MMKV().addOnValueChangedListener(key => {
     if (key === String(valKey) && onChange) {
       const val = new MMKV().getNumber(valKey) || 0
-      val && onChange(data[val] as number)
+      val >= 0 && onChange(data[val] as number)
     }
   })
 
@@ -90,9 +90,9 @@ export const SpinnerHorizontal = ({
         keyExtractor={(v, i) => String(i)}
         renderItem={(itemProps: { item: number; index: number }) => <Item {...itemProps} />}
         onScroll={onScrollFinish}
-        snapToAlignment={'center'}
         snapToInterval={ITEM_WIDTH}
-        decelerationRate={0.8}
+        snapToAlignment={isIPhone ? 'center' : undefined}
+        decelerationRate={isIPhone ? 'normal' : WIDTH / 5}
       />
     </View>
   )

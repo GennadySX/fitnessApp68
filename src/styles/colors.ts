@@ -20,6 +20,7 @@ export const DANGER_LIGHT = 'rgba(235, 87, 87, 0.7)'
 export const SUCCESS_LIGHT = 'rgba(39, 174, 96, 0.7)'
 export const LIGHT = '#EFF7F9'
 export const BLUE = '#4135f8'
+export const MODAL_BACKDROP = 'rgba(24,50,86,0.7)'
 
 //BLACKS
 export const BLACK = '#000000'

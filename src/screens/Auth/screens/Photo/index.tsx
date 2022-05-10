@@ -41,11 +41,10 @@ export const AuthPhotoScreen = () => {
   }
 
   const onSubmit = () => navigation.navigate(SCREENS.AUTH_PREPARING)
-  const onNavigateNutrition = () => navigation.navigate(SCREENS.AUTH_NUTRITION_PROGRAM)
 
   return (
     <Fragment>
-      <CustomHeader navigation={navigation} onRightCloseButton={onNavigateNutrition} />
+      <CustomHeader navigation={navigation} onRightCloseButton={onSubmit} />
 
       <View style={styles.block}>
         <Text style={styles.welcome}>Немного о себе</Text>

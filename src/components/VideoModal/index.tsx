@@ -20,12 +20,17 @@ import { hitSlop20 } from '@styles/spacing'
 import { Modal, Pressable, Text, TouchableOpacity, View } from 'react-native'
 
 import { style as s } from './style'
-import { HEIGHT, WIDTH } from '@utils/normalizer'
+import { hasNotch, HEIGHT, WIDTH } from '@utils/normalizer'
 import { IconsSVG } from '@constants/Icons/IconsSvg'
 import Orientation from 'react-native-orientation-locker'
 import { isAndroid, isIPhone } from '@utils/platform'
 import { useNavigation } from '@react-navigation/native'
 import { Colors, Spacing } from '@styles/index'
+import { Title } from '@ui/Title'
+import { MODAL_BACKDROP } from '@styles/colors'
+import { typography } from '@styles/typography'
+import { NavigationRef } from "@app";
+import { SCREENS } from "@routes/navigations.types";
 
 const HIDE_CONTROLS_DELAY = 1500
 
@@ -35,7 +40,7 @@ export type VideoComponentProps = {
 }
 
 export type VideoModalProps = {
-  onOpen: (uri: string, onCloseCallback?: () => void) => void
+  onOpen: (uri: string, onCloseCallback?: (unFinished?: boolean) => void) => void
   onClose: () => void
 }
 export const VideoModal = forwardRef(
@@ -44,7 +49,7 @@ export const VideoModal = forwardRef(
     const hideControlsTimerId = useRef<NodeJS.Timeout | undefined>(undefined)
     const [showControls, setShowControls] = useState<boolean>(false)
     const [isVisible, setVisible] = useState<boolean>(false)
-    const [closeCallback, setCloseCallback] = useState<() => void>(() => {})
+    const [closeCallback, setCloseCallback] = useState<(unFinished?: boolean) => void>(() => {})
     const [url, setUrl] = useState<string>('')
     const [isUserUsingProgressBar, setIsUserUsingProgressBar] = useState<boolean>(false)
     const [state, setState] = useState({
@@ -137,7 +142,7 @@ export const VideoModal = forwardRef(
       videoPlayer.current.seek(0)
     }
 
-    const onOpen = (uri: string, onCloseCallback?: () => void) => {
+    const onOpen = (uri: string, onCloseCallback?: (unFinished?: boolean) => void) => {
       setUrl(uri)
       Orientation.lockToLandscape()
 
@@ -147,12 +152,11 @@ export const VideoModal = forwardRef(
     }
 
     const onClose = () => {
-      if (isIPhone) {
-        onCloseScreen && onCloseScreen()
+      if (Number(state.duration - state.currentTime) > 1) {
+        setHideModalVisible(true)
+        return
       }
-      Orientation.lockToPortrait()
-      setVisible(false)
-      closeCallback && closeCallback()
+      onCloseVideo(false)
     }
 
     const getTimeSec = Math.round((state.duration - state.currentTime) % 60)
@@ -164,6 +168,26 @@ export const VideoModal = forwardRef(
       onClose,
       onOpen,
     }))
+
+    const [hideModalVisible, setHideModalVisible] = useState<boolean>(false)
+
+    const onCloseVideo = (unFinished?: boolean) => {
+      if (isIPhone) {
+        onCloseScreen && onCloseScreen()
+      }
+      onHideCloseModal()
+      Orientation.lockToPortrait()
+      setVisible(false)
+      if (unFinished && NavigationRef?.current?.getCurrentRoute()?.name === SCREENS.WORKOUT_FINISH ) {
+        NavigationRef?.current?.goBack()
+        NavigationRef?.current?.goBack()
+      } else {
+        closeCallback && closeCallback(unFinished)
+      }
+    }
+    const onHideCloseModal = () => {
+      setHideModalVisible(false)
+    }
 
     if (isScreen)
       return (
@@ -226,6 +250,11 @@ export const VideoModal = forwardRef(
 
     return isAndroid ? (
       <Modal onRequestClose={onClose}>
+        <CloseModal
+          isVisible={hideModalVisible}
+          onConfirm={() => onCloseVideo(true)}
+          onCancel={onHideCloseModal}
+        />
         <View style={[s.backgroundVideo]}>
           <Video
             onLoadStart={onLoaStart}
@@ -291,6 +320,11 @@ export const VideoModal = forwardRef(
       </Modal>
     ) : (
       <View style={[s.backgroundVideo]}>
+        <CloseModal
+          isVisible={hideModalVisible}
+          onConfirm={onCloseVideo}
+          onCancel={onHideCloseModal}
+        />
         <Video
           onLoadStart={onLoaStart}
           onLoad={onLoadEnd}
@@ -354,3 +388,93 @@ export const VideoModal = forwardRef(
     )
   },
 )
+
+const CloseModal = ({
+  isVisible,
+  onConfirm,
+  onCancel,
+}: {
+  isVisible: boolean
+  onCancel: () => void
+  onConfirm: () => void
+}) => {
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        zIndex: isVisible ? 99 : -1,
+        width: HEIGHT + (hasNotch ? 0 : 100),
+        height: WIDTH,
+        backgroundColor: Colors.MODAL_BACKDROP,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <View
+        style={{
+          height: 220,
+          width: 341,
+          backgroundColor: Colors.WHITE,
+          borderRadius: 25,
+          paddingHorizontal: Spacing.MEDIUM,
+          paddingVertical: Spacing.MEDIUM_PLUS,
+          alignItems: 'center',
+        }}>
+        <Title
+          text={'Вы действительно хотите\nзавершить тренировку ? '}
+          textStyle={{ top: 10 }}
+          fontSize={25}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: Spacing.TINY,
+            alignItems: 'center',
+            marginTop: Spacing.GIANT,
+          }}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={onConfirm}
+            style={{
+              alignItems: 'center',
+              height: 60,
+              width: 150,
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                ...typography.small,
+                color: Colors.PRIMARY_DARKER,
+                fontSize: 18,
+                lineHeight: 21.19,
+              }}>
+              Завершить
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={onCancel}
+            style={{
+              backgroundColor: Colors.PRIMARY_DARKER,
+              borderRadius: Spacing.TINY,
+              alignItems: 'center',
+              height: 60,
+              width: 150,
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                ...typography.small,
+                color: Colors.WHITE,
+                fontSize: 18,
+                lineHeight: 21.19,
+              }}>
+              Отмена
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  )
+}

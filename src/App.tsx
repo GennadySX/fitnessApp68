@@ -20,7 +20,7 @@ const App = () => {
     <AppBlock>
       <NavigationContainer ref={NavigationRef}>
         <Stack.Navigator
-          initialRouteName={SCREENS.AUTH_NAME}
+          initialRouteName={SCREENS.AUTH_INIT}
           screenOptions={{
             header: Header,
             animation: 'slide_from_right',

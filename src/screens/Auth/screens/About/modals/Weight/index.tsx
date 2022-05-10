@@ -3,7 +3,7 @@
  * @created at 2022
  **/
 
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './styles'
 import { ModalBottom, ModalBottomProps } from '@components/Modal'
@@ -14,19 +14,22 @@ import { WeightMock } from '@screens/Auth/screens/About/modals/Weight/mock'
 import { MMKVStorageEnums } from '@utils/MMKVStorage'
 import { isAndroid } from '@utils/platform'
 import { NativeScreen } from 'react-native-screens'
+import { GrowthMock } from '@screens/Auth/screens/About/modals/Growth/mock'
 
 type WeightModalProps = {
   weight: number
   setWeight: (weight: number) => void
   onClose: () => void
 } & ModalBottomProps
-export const WeightModal = ({ weight, setWeight, onClose, ...props }: WeightModalProps) => {
-  const [v, setV] = useState<number>(weight)
+export const WeightModal = ({  setWeight, onClose, ...props }: WeightModalProps) => {
+  const initialValue = Number(WeightMock[0])
+  const [v, setV] = useState<number>(initialValue)
 
   const onSubmit = () => {
     onClose()
     setWeight(v)
   }
+
 
   return (
     <ModalBottom

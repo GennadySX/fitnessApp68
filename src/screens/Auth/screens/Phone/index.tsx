@@ -42,7 +42,7 @@ export const AuthPhoneScreen = () => {
       <View style={{ flex: 1, paddingTop: Spacing.GIANT * 2, maxHeight: 520 }}>
         <PhoneInput
           value={phone}
-          placeholder={'(978) 048-65-75'}
+          placeholder={'(900) 000-00-00'}
           style={{ marginBottom: Spacing.GIANT }}
         />
         <VirtualKeyboard

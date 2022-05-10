@@ -4,15 +4,18 @@
  **/
 
 import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 import { styles } from '@screens/Auth/components/LevelActivity/styles'
 import { Svg, SvgStyleType } from '@components/Svg'
 import { IconsSVG } from '@constants/Icons/IconsSvg'
 import { Slider } from '@miblanchard/react-native-slider'
 import { Colors } from '@styles/index'
+import HitSlops from '@constants/hitSlops'
 
 type LevelActivityProps = {}
 
+
+const levelLabels = ['Минимум', 'Низкая', 'Средняя', 'Высокая', 'Максимум']
 const MAX = 4
 export const LevelActivity = ({}: LevelActivityProps) => {
   const [value, setValue] = useState<number>(1)
@@ -41,7 +44,7 @@ export const LevelActivity = ({}: LevelActivityProps) => {
     <View style={styles.block}>
       <Text style={styles.title}>{'Увровень физической \nнагрузки '}</Text>
       <View style={styles.slideBlock}>
-        <MinButton />
+        <MinButton hitSlop={HitSlops.hitSlop_24} activeOpacity={0.9} onPress={() => setValue(0)} />
         <Slider
           value={value}
           step={1}
@@ -55,29 +58,34 @@ export const LevelActivity = ({}: LevelActivityProps) => {
           renderThumbComponent={TrackButton}
           onValueChange={onSlide}
         />
-        <MaxButton value={value} />
+        <MaxButton
+          value={value}
+          hitSlop={HitSlops.hitSlop_24}
+          activeOpacity={0.9}
+          onPress={() => setValue(MAX)}
+        />
       </View>
 
       <Text style={styles.desc}>
-        Низкий уровень, <Text style={styles.descGray}>подойдет новичкам</Text>
+        {levelLabels[value]} уровень, <Text style={styles.descGray}>подойдет новичкам</Text>
       </Text>
     </View>
   )
 }
 
-const MinButton = () => {
+const MinButton = (props: TouchableOpacityProps) => {
   return (
-    <View style={styles.minPinch}>
+    <TouchableOpacity style={styles.minPinch} {...props}>
       <Text style={styles.minText}>Min</Text>
       <Svg source={IconsSVG.union} />
-    </View>
+    </TouchableOpacity>
   )
 }
 
-const MaxButton = ({ value }: { value: number }) => {
+const MaxButton = ({ value, ...props }: { value: number } & TouchableOpacityProps) => {
   const isActive = value === MAX
   return (
-    <View style={styles.maxPinch}>
+    <TouchableOpacity style={styles.maxPinch} {...props}>
       <Text style={[styles.minText, styles.maxText]}>Max</Text>
       <View style={styles.maxIcon}>
         <Svg
@@ -85,7 +93,7 @@ const MaxButton = ({ value }: { value: number }) => {
           style={{ color: isActive ? Colors.PRIMARY_DARKER : Colors.PRIMARY_LIGHT } as SvgStyleType}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

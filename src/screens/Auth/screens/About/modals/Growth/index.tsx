@@ -22,13 +22,13 @@ type GrowthModalProps = {
 } & ModalBottomProps
 
 export const GrowthModal = ({ growth, setGrowth, onClose, ...props }: GrowthModalProps) => {
-  const [v, setV] = useState<number>(growth)
+
+  const [v, setV] = useState<number>(Number(GrowthMock[50]))
 
   const onSubmit = () => {
     onClose()
     setGrowth(v)
   }
-
   return (
     <ModalBottom
       modalStyle={{ paddingTop: 0, paddingLeft: 0 }}

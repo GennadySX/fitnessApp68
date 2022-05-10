@@ -3,8 +3,8 @@ apply plugin: "com.android.application"
 import com.android.build.OutputFile
 
 
-def buildCode = 30	
-def buildName = '1.0.30'
+def buildCode = 33
+def buildName = '1.0.33'
 def buildByHermes = true
 def isUniversal = false
 def applicationName = "FitnessApp"
@@ -237,6 +237,11 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            applicationVariants.all { variant ->
+                        variant.outputs.all {
+                            outputFileName = "${applicationName}_${buildName}.apk"
+                        }
+                    }
         }
     }
 
@@ -252,7 +257,6 @@ android {
                 output.versionCodeOverride =
                         defaultConfig.versionCode * 1000 + versionCodes.get(abi)
             }
-
         }
     }
 }

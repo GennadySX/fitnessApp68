@@ -15,4 +15,5 @@ export const Assets = {
   levelA: require('../../assets/image/levelA.png'),
   calory: require('../../assets/image/calory.png'),
   splash: require('../../assets/splash.png'),
+  logo: require('../../assets/logo.png'),
 }

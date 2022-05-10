@@ -4,12 +4,10 @@
  **/
 
 import React, { Fragment, useEffect, useRef, useState } from 'react'
-import { Animated, ImageBackground, Text, View } from 'react-native'
+import { Animated, Image, ImageBackground, Text, View } from 'react-native'
 import { Colors, Spacing } from '@styles/index'
 // @ts-ignore
-import { AnimatedSVGPath } from 'react-native-svg-animations'
 import { HEIGHT, WIDTH } from '@utils/normalizer'
-import { BootSplashLogoSvgPaths } from '@layouts/AppBlock/components/BootSplash/SvgPaths'
 import DeviceInfo from 'react-native-device-info'
 import { typography } from '@styles/typography'
 import { Assets } from '@constants/Icons/Assets'
@@ -66,8 +64,8 @@ export const BootSplash = () => {
           alignItems: 'center',
           justifyContent: 'center',
           flex: 1,
+          paddingLeft: Spacing.SMALL,
           alignSelf: 'center',
-          paddingTop: 100,
           width: WIDTH,
           height: HEIGHT,
         }}
@@ -77,19 +75,10 @@ export const BootSplash = () => {
           height: HEIGHT + 100,
         }}
         source={Assets.splash}>
-        <View
-          style={{ flex: 1, alignItems: 'center', justifyContent: 'center', top: Spacing.SMALL }}>
-          <AnimatedSVGPath
-            strokeColor={Colors.WHITE}
-            duration={2500}
-            strokeWidth={0.7}
-            height={200}
-            width={200}
-            scale={1}
-            fill={initColor}
-            delay={1000}
-            d={BootSplashLogoSvgPaths.join('')}
-            loop={false}
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Image
+            source={Assets.logo}
+            style={{ width: WIDTH, height: WIDTH, resizeMode: 'cover' }}
           />
         </View>
         <Text

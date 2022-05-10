@@ -44,7 +44,7 @@ export const AuthEmailScreen = () => {
           <Title text={'Введите адрес \nэлектронной почты'} textStyle={styles.title} />
           <View style={{ flex: 1, paddingTop: Spacing.GIANT * 2, maxHeight: 520 }}>
             <InputUI
-              textStyle={styles.input}
+              textStyle={[styles.input, {width: '100%'}]}
               value={email}
               keyboardType={'email-address'}
               textContentType={'emailAddress'}

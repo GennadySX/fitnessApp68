@@ -9,7 +9,8 @@ import { Colors } from '@styles/index'
 import { SafeAreaProvider } from 'react-native-safe-area-context/src/SafeAreaContext'
 import { VideoModal, VideoModalProps } from '@components/VideoModal'
 import { LogBox } from 'react-native'
-import { BootSplash } from "@layouts/AppBlock/components/BootSplash";
+import { BootSplash } from '@layouts/AppBlock/components/BootSplash'
+import { NetworkStatus } from "@layouts/AppBlock/components/NetworkStatus";
 
 LogBox.ignoreLogs(['ViewPropTypes will be removed', 'ColorPropType will be removed'])
 
@@ -21,9 +22,10 @@ export const AppBlock = ({ children }: AppBlockProps) => {
   return (
     <Fragment>
       <VideoModal ref={ref => (VideoPlayerRef = ref)} />
+      <NetworkStatus />
       <SafeAreaProvider>
         <StatusBar barStyle={'dark-content'} backgroundColor={Colors.WHITE} />
-        <BootSplash/>
+        <BootSplash />
         {children}
       </SafeAreaProvider>
     </Fragment>

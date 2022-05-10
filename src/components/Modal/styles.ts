@@ -6,11 +6,11 @@
 import { StyleSheet } from 'react-native'
 import { Spacing } from '@styles/index'
 import { typography } from '@styles/typography'
-import { HEIGHT, WIDTH } from '@utils/normalizer'
+import { MODAL_BACKDROP } from '@styles/colors'
 
 export const _styles = StyleSheet.create({
   backdrop: {
-    backgroundColor: 'rgba(24,50,86,0.7)',
+    backgroundColor: MODAL_BACKDROP,
     opacity: 1,
   },
   container: {

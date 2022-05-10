@@ -34,7 +34,12 @@ export const WorkoutScreen = () => {
 
   return (
     <View style={[styles.block, isIPhone && hasNotch && { paddingTop: 60 }]}>
-      <AccountHeader unPadding />
+      <AccountHeader
+        unPadding
+        style={{
+          bottom: 3,
+        }}
+      />
       <View style={styles.headerContainer}>
         <Text style={styles.title}>Тренировка</Text>
         <Text style={styles.headerDesc}>

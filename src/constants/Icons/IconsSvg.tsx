@@ -27,6 +27,7 @@ import photoPlaceholder from '@assets/svg/photoPlaceholder.svg'
 import lineDark from '@assets/svg/lineDark.svg'
 import lineGray from '@assets/svg/lineGray.svg'
 import xCross from '@assets/svg/xCross.svg'
+import logo from '@assets/svg/logo.svg'
 
 export type SvgPropsType = {
   style?: SvgStyleType
@@ -57,7 +58,8 @@ export const IconsSVG = {
   photoPlaceholder,
   lineDark,
   lineGray,
-  xCross
+  xCross,
+  logo,
 }
 
 const Union = ({ style }: SvgPropsType) => (
